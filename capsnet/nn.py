@@ -7,12 +7,14 @@ def softmax(_logits, axis):
 
 @tf.function(input_signature=(tf.TensorSpec(shape=(None, None, None), dtype=tf.float32),))
 def norm(data):
+    import tensorflow as tf
     e = 1e-10
     squared_sum = tf.reduce_sum(tf.square(data), axis=-1)
     return tf.sqrt(squared_sum + e)
 
 
 def squash(data, axis=-1):
+    import tensorflow as tf
     """
     Normalize to unit vectors
     :param data: Tensor with rank >= 2
